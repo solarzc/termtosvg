@@ -8,6 +8,7 @@ import termtosvg.config as config
 
 logger = logging.getLogger('termtosvg')
 
+DEFAULT_TEMPLATE = 'plain'
 USAGE = """termtosvg [--screen-geometry COLUMNSxLINES] [--template TEMPLATE] [--verbose] [--help] [output_file]
 
 Record a terminal session and render an SVG animation on the fly
@@ -158,9 +159,9 @@ def main(args=None, input_fileno=None, output_fileno=None):
     logger.setLevel(logging.INFO)
 
     templates = config.default_templates()
-    default_template = 'plain' if 'plain' in templates else sorted(templates)[0]
+    assert DEFAULT_TEMPLATE in templates
 
-    command, args = parse(args[1:], templates, default_template, None)
+    command, args = parse(args[1:], templates, DEFAULT_TEMPLATE, None)
 
     if args.verbose:
         _, log_filename = tempfile.mkstemp(prefix='termtosvg_', suffix='.log')
