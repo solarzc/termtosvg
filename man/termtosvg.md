@@ -15,7 +15,7 @@ termtosvg makes recordings of terminal sessions in animated SVG format. If no ou
 filename is provided, a random temporary filename will be automatically generated.
 
 #### COMMANDS
-termtosvg provides the two following commands which may be useful in a few cases:
+The default behavior of termtosvg is to render an SVG animation 
 
 ##### termtosvg record
 Record a terminal session in asciicast v2 format. The recording is a text file which
@@ -57,9 +57,34 @@ of ways including, but not limited to:
 structure
 
 
+```SVG
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="terminal" baseProfile="full" viewBox="0 0 656 325" width="656" version="1.1"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <termtosvg:template_settings xmlns:termtosvg="https://github.com/nbedos/termtosvg">
+            <termtosvg:screen_geometry columns="82" rows="19"/>
+        </termtosvg:template_settings>
+        <style type="text/css" id="generated">
+            <!-- [snip!] -->
+        </style>
+    </defs>
+    <svg id="screen" width="656" viewBox="0 0 656 323" preserveAspectRatio="xMidYMin meet">
+        <!-- [snip!] -->
+    </svg>
+</svg>
+```
+
+| Template | Color theme | JavaScript | Description |
+| --- | --- | --- | --- |
+| **plain** | gjm8 | No | No decoration |
+| **progress_bar** | gjm8 | No | Adds a progress bar at the bottom |
+| **carbon** | gjm8 | No | Terminal window frame |
+| **carbon_js** | gjm8 | Yes | Terminal window frame with animation controls (play, pause, seek) |
+
 ## ENVIRONMENT
 ##### SHELL
-termtosvg will spawn the shell specified by this variable, or ``/bin/sh`` if the
+termtosvg will spawn the shell specified by the SHELL environment variable, or ``/bin/sh`` if the
 variable does not exist. Spawning a new shell is necessary so that termtosvg can act
 as an intermediary between the shell and the pseudo terminal and capture all the data sent
 to the terminal.
@@ -67,7 +92,7 @@ to the terminal.
 
 ## EXAMPLES
 
-Record a terminal session and name the animation `animation.svg`:
+Record a terminal session and produce an SVG animation named `animation.svg`:
 ```
 termtosvg animation.svg
 ```
