@@ -77,10 +77,10 @@ structure
 
 | Template | Color theme | JavaScript | Description |
 | --- | --- | --- | --- |
-| **plain** | gjm8 | No | No decoration |
-| **progress_bar** | gjm8 | No | Adds a progress bar at the bottom |
-| **carbon** | gjm8 | No | Terminal window frame |
-| **carbon_js** | gjm8 | Yes | Terminal window frame with animation controls (play, pause, seek) |
+| [**plain**](../termtosvg/data/templates/plain.svg) | gjm8 | No | No decoration |
+| [**progress_bar**](../termtosvg/data/templates/progress_bar.svg) | gjm8 | No | Adds a progress bar at the bottom |
+| [**carbon**](../termtosvg/data/templates/carbon.svg) | gjm8 | No | Terminal window frame |
+| [**carbon_js**](../termtosvg/data/templates/carbon_js.svg) | gjm8 | Yes | Terminal window frame with animation controls (play, pause, seek) |
 
 ## ENVIRONMENT
 ##### SHELL
